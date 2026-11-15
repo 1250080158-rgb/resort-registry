@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useRef, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { View, Property, adminUser, User as MockUser } from "./data/mockData"
 import { properties as mockProperties } from "./data/mockData"
 import { blogPosts } from "./data/blogPosts"
@@ -138,6 +138,7 @@ export default function App() {
   const [navData, setNavData] = useState<NavData>({})
   const viewStackRef = useRef<View[]>([])
   const location = useLocation()
+  const routerNavigate = useNavigate()
 
   // Khi URL thay đổi (Back/Forward hoặc navigate), đồng bộ sang view cho trang công khai
   useEffect(() => {
@@ -255,7 +256,9 @@ export default function App() {
     } else {
       url = VIEW_TO_URL[newView]
     }
-    window.history.pushState({ view: newView }, "", url)
+    // Dùng navigate của React Router để location cập nhật ngay
+    // (window.history.pushState gọi tay KHÔNG được React Router v7 đồng bộ)
+    routerNavigate(url, { state: { view: newView } })
     setView(newView)
     window.scrollTo(0, 0)
   }
@@ -264,7 +267,7 @@ export default function App() {
     applyUser(user)
     localStorage.setItem(SESSION_KEY, JSON.stringify(user))
     localStorage.setItem(TOKEN_KEY, token)
-    handleNavigate(user.role === "ADMIN" ? "admin-dashboard" : "home")
+    // Điều hướng do LoginPage tự gọi navigate sau onLogin — không navigate trùng ở đây
   }
 
   const handleProfileSaved = (user: ApiUser) => {
@@ -280,7 +283,7 @@ export default function App() {
     localStorage.removeItem(SESSION_KEY)
     localStorage.removeItem(TOKEN_KEY)
     viewStackRef.current = []
-    window.history.replaceState({ view: "home" }, "", "/")
+    routerNavigate("/", { replace: true })
     setView("home")
   }
 
