@@ -197,7 +197,7 @@ export default function App() {
     }
   }, [])
 
-  const handleNavigate = (newView: View, data?: unknown) => {
+  const handleNavigate = (newView: View, data?: unknown, options?: { replace?: boolean }) => {
     if (data) {
       if (newView === "property-detail") {
         const d = data as { property?: Property }
@@ -258,7 +258,7 @@ export default function App() {
     }
     // Dùng navigate của React Router để location cập nhật ngay
     // (window.history.pushState gọi tay KHÔNG được React Router v7 đồng bộ)
-    routerNavigate(url, { state: { view: newView } })
+    routerNavigate(url, { state: { view: newView }, replace: options?.replace })
     setView(newView)
     window.scrollTo(0, 0)
   }

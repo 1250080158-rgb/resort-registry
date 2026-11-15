@@ -3,7 +3,7 @@ import { View } from '../../data/mockData';
 import { authApi, RegisterData, User } from '../../utils/api';
 
 interface LoginPageProps {
-  navigate: (view: View) => void;
+  navigate: (view: View, data?: unknown, options?: { replace?: boolean }) => void;
   onLogin: (user: User, token: string) => void;
 }
 
@@ -28,7 +28,8 @@ export default function LoginPage({ navigate, onLogin }: LoginPageProps) {
     try {
       const { user, token } = await authApi.login(loginEmail, loginPassword);
       onLogin(user, token);
-      navigate(user.role === 'ADMIN' ? 'admin-dashboard' : 'home');
+      // replace: true — bỏ /dang-nhap khỏi lịch sử để Back không quay lại form login
+      navigate(user.role === 'ADMIN' ? 'admin-dashboard' : 'home', undefined, { replace: true });
     } catch (err) {
       setFormError(err instanceof Error ? err.message : 'Đăng nhập thất bại');
     } finally {
@@ -66,7 +67,7 @@ export default function LoginPage({ navigate, onLogin }: LoginPageProps) {
       const userData: RegisterData = { name, email, phone, cmnd, address, password };
       const { user, token } = await authApi.register(userData);
       onLogin(user, token);
-      navigate('home');
+      navigate('home', undefined, { replace: true });
     } catch (err) {
       setFormError(err instanceof Error ? err.message : 'Đăng ký thất bại');
     } finally {
