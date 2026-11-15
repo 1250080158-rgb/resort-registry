@@ -25,9 +25,15 @@ export default function Footer({ navigate }: FooterProps) {
             Nền tảng đăng ký và quản lý nhà ở khu nghỉ dưỡng cao cấp hàng đầu Việt Nam.
           </p>
           <div className="flex gap-3 mt-4">
-            {['facebook', 'instagram', 'linkedin'].map(s => (
-              <a key={s} href="#" className="w-8 h-8 rounded-full bg-navy-lighter flex items-center justify-center hover:bg-gold hover:text-navy transition-all text-xs uppercase">
-                {s[0]}
+            {['facebook', 'instagram', 'linkedin', 'github'].map(s => (
+              <a
+                key={s}
+                href={s === 'github' ? 'https://github.com/1250080158-rgb/resort-registry' : '#'}
+                target={s === 'github' ? '_blank' : undefined}
+                rel={s === 'github' ? 'noopener noreferrer' : undefined}
+                className="w-8 h-8 rounded-full bg-navy-lighter flex items-center justify-center hover:bg-gold hover:text-navy transition-all text-xs uppercase"
+              >
+                {s === 'github' ? 'GH' : s[0]}
               </a>
             ))}
           </div>
