@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #0D1F35;
+  --color-navy-light: #1A3354;
+  --color-navy-lighter: #243B55;
+  --color-gold: #C9A96E;
+  --color-gold-light: #E8D5B0;
+  --color-gold-dark: #A8895A;
+  --color-cream: #F8F6F1;
+  --color-cream-dark: #EDE9E0;
+  --color-teal: #1B5E7A;
+  --color-teal-light: #2E7D9B;
+  --color-muted: #6B7589;
+  --color-success: #2D7A4F;
+  --color-error: #C0392B;
+  --color-warning: #D4860B;
+
+  --font-family-display: 'Fraunces', Georgia, serif;
+  --font-family-body: 'Outfit', system-ui, sans-serif;
+  --font-family-mono: 'DM Mono', monospace;
+}
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background-color: #F8F6F1;
+  color: #0D1F35;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-mono-data {
+  font-family: 'DM Mono', monospace;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+*:hover {
+  scrollbar-color: #C9A96E30 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background-color: #C9A96E50;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #C9A96E;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C9A96E 0%, #E8D5B0 50%, #C9A96E 100%);
+}
+
+.navy-gradient {
+  background: linear-gradient(135deg, #0D1F35 0%, #243B55 100%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

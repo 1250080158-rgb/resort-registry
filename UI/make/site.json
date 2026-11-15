@@ -1,0 +1,10 @@
+{
+  "description": "Manage and book resort homes with user-friendly search, booking, secure payments, and admin tools for property and booking management.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

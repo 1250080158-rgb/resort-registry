@@ -1,0 +1,14 @@
+@startwbs
+* Trang chủ (/) — "nền tảng đặt phòng resort"
+**[#dae8fc] Nhà nghỉ dưỡng (/listings) — "đặt phòng resort"
+*** Theo loại: Biệt thự · Bungalow · Penthouse · Căn hộ
+*** Theo địa điểm: Đà Nẵng · Phú Quốc · Hội An
+***[#dae8fc] Mua BĐS nghỉ dưỡng (/listings?deal=buy)
+**[#dae8fc] Chi tiết nhà (/property/:id) — "villa Hội An view biển"
+***[#dae8fc] Đặt phòng (/booking)
+***[#dae8fc] Thanh toán (/payment)
+**[#d5e8d4] Blog (/blog) — "biệt thự nghỉ dưỡng là gì"
+*** Kiến thức · Kinh nghiệm · Địa điểm · Đầu tư
+**[#ffe6cc] Tài khoản (/login · /history) — "đăng nhập ResortRegistry"
+**[#ffe6cc] Hỗ trợ — Chat trực tuyến · FAQ
+@endwbs
